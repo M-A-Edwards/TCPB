@@ -2,7 +2,9 @@ import gymnasium as gym
 import numpy as np
 from tqdm import tqdm
 import sys
+import os
 sys.path.append("..")
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from utils.preprocess import preprocess_frame
 from configs.config import DATASET_SIZE

@@ -1,8 +1,9 @@
 import torch
 import sys
 import matplotlib.pyplot as plt
-
+import os 
 sys.path.append("..")
+#sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from models.world_model import WorldModel
 from utils.dataset import WorldModelDataset
