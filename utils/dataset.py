@@ -3,9 +3,10 @@ from torch.utils.data import Dataset
 import numpy as np
 
 class WorldModelDataset(Dataset):
-    def __init__(self, file):
 
-        data = np.load(file)
+    def __init__(self,path):
+
+        data = np.load(path)
 
         self.obs = data["obs"]
         self.next_obs = data["next_obs"]
@@ -14,10 +15,10 @@ class WorldModelDataset(Dataset):
     def __len__(self):
         return len(self.obs)
 
-    def __getitem__(self, idx):
+    def __getitem__(self,idx):
 
-        o = torch.tensor(self.obs[idx]).unsqueeze(0)
-        n = torch.tensor(self.next_obs[idx]).unsqueeze(0)
-        a = torch.tensor(self.actions[idx]).long()
+        obs = torch.tensor(self.obs[idx]).unsqueeze(0)
+        next_obs = torch.tensor(self.next_obs[idx]).unsqueeze(0)
+        action = torch.tensor(self.actions[idx])
 
-        return o, a, n
+        return obs, action, next_obs

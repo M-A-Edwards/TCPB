@@ -24,9 +24,9 @@ for epoch in range(EPOCHS):
 
     for obs,action,next_obs in loader:
 
-        obs = obs.to(DEVICE)
-        next_obs = next_obs.to(DEVICE)
-        action = action.to(DEVICE)
+        obs = obs.float().to(DEVICE)
+        next_obs = next_obs.float().to(DEVICE)
+        action = action.float().to(DEVICE)
 
         pred,mask = model(obs,action)
         recon_loss = loss_fn(pred,next_obs)

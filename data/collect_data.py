@@ -9,8 +9,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from utils.preprocess import preprocess_frame
 from configs.config import DATASET_SIZE
 
-env = gym.make("CartPole-v1", render_mode="rgb_array")
-
+env = gym.make("CarRacing-v2", render_mode="rgb_array")
 obs_list = []
 next_list = []
 actions = []
@@ -40,5 +39,5 @@ np.savez(
     "dataset.npz",
     obs=np.array(obs_list),
     next_obs=np.array(next_list),
-    actions=np.array(actions),
+    actions=np.array(actions, dtype=np.float32),
 )
